@@ -1,0 +1,67 @@
+<div class="container">
+<div class="jumbotron  text-light text-center p-5">
+  <h1> Eat the Burgers App!</h1>
+</div>
+
+<div class="col-12 ">
+      <form id="burger-form">
+        <div class="alert alert-info" role="alert">
+          <h2>You can Place your Burger here</h2>
+        </div>
+        
+        <input class="form-control" id="burger-input" placeholder="Burger's Name" />
+        <button class="btn btn-success btn-block" type="submit"> <i class="fas fa-cheeseburger"></i>
+          Place A Burger!
+        </button>
+      </form>
+    </div>
+
+    {{!-- Right columm for printing burgers --}}
+   
+      <div class="row">
+
+        {{!-- Inner left column for burgers waiting to be devoured --}}
+        <div class="col-12 col-md-6 ">
+           <ul class="list-group my-5">
+          <li class="list-group-item list-group-item-info text-center ">
+              <h2>Waiting To Be Devoured</h2>
+         </li>
+         
+            {{#each burgerData}}
+              {{#unless devoured}}
+              <li class="list-group-item d-flex">
+                {{burger_name}}
+                <span class="ml-auto">
+                  <button class="btn btn-sm btn-warning devour-burger" data-id="{{id}}" data-devoured="true"> Devour It!</button>
+                </span>
+              </li>
+              {{/unless}}
+            {{/each}}
+          </ul>
+        </div>
+
+        {{!-- Inner right column for burgers that have been devoured --}}
+        <div class="col-12 col-md-6">
+           <ul class="list-group my-5">
+          <li class="list-group-item list-group-item-info text-center">
+              <h2>Already Devoured</h2>
+         </li>
+          
+         
+            {{#each burgerData}}
+              {{#if devoured}}
+              <li class="list-group-item d-flex">
+                {{burger_name}}
+              </li>
+              {{/if}}
+            {{/each}}
+          </ul>
+        </div>
+
+      {{!-- Do not delete! --}}
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<script type="text/javascript" src="./assets/js/burgers.js"></script>
